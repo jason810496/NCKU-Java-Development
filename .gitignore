@@ -1,2 +1,5 @@
 *.zip
 .vscode
+
+upload.log
+.env

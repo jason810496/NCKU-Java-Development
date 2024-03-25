@@ -2,8 +2,12 @@ STUDENT_ID=F74116720
 TARGET=src META-INF
 
 zip:
-ifndef DIR
-	$(error DIR is not set)
+ifndef HW
+	$(error HW is not set)
 endif
-	cd $(DIR) && zip -r $(STUDENT_ID).zip $(TARGET) && mv $(STUDENT_ID).zip ../
+	cd $(HW) && zip -r $(STUDENT_ID).zip $(TARGET) && mv $(STUDENT_ID).zip ../
 .PHONY: zip
+
+judge: zip
+	./upload.sh $(STUDENT_ID) $(HW)
+.PHONY: judge
