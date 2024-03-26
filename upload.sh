@@ -6,6 +6,7 @@
 # CONST
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
 # load .env file
@@ -55,7 +56,11 @@ if [ ! -z "$success_result" ]; then
     numTestCases=$(echo $success_result | awk '{print $2}')
     score=$(echo $success_result | awk '{print $3}')
     runTime=$(echo $success_result | awk '{print $4}')
-    echo "${GREEN}$HW Success${NC}"
+    if [ $numPassed -eq $numTestCases ]; then
+        echo "${GREEN}$HW All correct${NC}"
+    else
+        echo "${YELLOW}$HW Partial correct${NC}"
+    fi
     echo "Total test cases: \t$numTestCases"
     echo "Passed test cases: \t$numPassed"
     echo "Score: \t\t\t$score"
