@@ -8,5 +8,5 @@ cp template.env .env
 ```
 
 ```bash
-make zip DIR=HW1 # switch to HW-XXX to zip other homework folder
+make zip HW=HW1 # switch to HW2, HW3 ... to zip other homework folder
 ```
