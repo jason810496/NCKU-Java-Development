@@ -62,7 +62,7 @@ public class Final3 {
 
     private static boolean bfs(int p1x,int p1y,int p2x,int p2y){
         // System.out.print("srcCard ");
-        // System.out.println(srcCard);
+        // System.out.println(mp[p1x][p1y]);
 
 
         List<int[]> que = new ArrayList<>();
@@ -116,16 +116,21 @@ public class Final3 {
                 // System.out.print(" nxtY ");
                 // System.out.print(nxtY);
                 // System.out.print("\n");
+                int newTurn = turnCount;
+                if( lastVec != -1 && lastVec != k ){
+                    newTurn+= 1;
+                }
+
+                if( newTurn > 2 ){
+                    continue;
+                }
 
                 if( mp[nxtX][nxtY] == 0 && !visited[nxtX][nxtY]){
-                    int turn = 0;
-                    if( lastVec != -1 && lastVec != k ){
-                        turn = 1;
-                    }
+                    
                     parent[nxtX][nxtY] = pair2int(curX,curY);
                     visited[nxtX][nxtY] = true;
 
-                    que.add(new int[]{ pair2int(nxtX, nxtY) , k , turnCount+turn} );
+                    que.add(new int[]{ pair2int(nxtX, nxtY) , k , newTurn} );
                     continue;
                 }
 
@@ -152,7 +157,7 @@ public class Final3 {
     }
 
     private static boolean inside(int i ,int j){
-        return (0<=i && i<=n ) && ( 0<=j && j<=n);
+        return (0<=i && i<=n+1 ) && ( 0<=j && j<=n+1);
     }
 
     private static void debug(){
