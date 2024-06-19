@@ -1,7 +1,6 @@
 package homework;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Scanner;
 
 
@@ -62,7 +61,6 @@ public class Final3 {
     
 
     private static boolean bfs(int p1x,int p1y,int p2x,int p2y){
-        int srcCard = mp[p1x][p1y];
         // System.out.print("srcCard ");
         // System.out.println(srcCard);
 
@@ -77,8 +75,8 @@ public class Final3 {
         que.add(new int[]{ pair2int(p1x, p1y) , -1 , 0 } );
 
         while(!que.isEmpty()){
-            int[] tmp = que.getFirst();
-            que.removeFirst();
+            int[] tmp = que.get(0);
+            que.remove(0);
             int lastVec = tmp[1];
             int turnCount = tmp[2];
 
